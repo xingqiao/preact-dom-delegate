@@ -110,10 +110,10 @@ const { options } = preact;
 let oldHook = options.vnode; // 保存之前的钩子函数
 options.vnode = vnode => {
     // 设置了on属性时，创建Delegate对象进行委托
-    let { attributes } = vnode;
-    if (attributes.on && isFunction(attributes.on)) {
-        attributes.on(new Delegate(vnode));
-        delete attributes.on;
+    let { on } = vnode.attributes || {};
+    if (on && isFunction(on)) {
+        on(new Delegate(vnode));
+        delete vnode.attributes.on;
     }
     // 执行之前的钩子函数
     if (oldHook) {

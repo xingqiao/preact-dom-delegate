@@ -67,8 +67,8 @@ class Delegate {
         // 查找子元素命中的委托
         while (target && root && target != root) {
             let matches = {};
-            for (let index = 0; index < list.length; index++) {
-                let { selector, handler } = list[index];
+            for (let i = 0; i < list.length; i++) {
+                let { index, selector, handler } = list[i];
                 if (selector) {
                     if (matches[selector] == null) {
                         let finds = root.querySelectorAll(selector);
@@ -76,6 +76,7 @@ class Delegate {
                     }
                     if (matches[selector]) {
                         execList.push({
+                            index,
                             target,
                             handler,
                             event: Object.assign({}, event, { target })
@@ -86,9 +87,9 @@ class Delegate {
             target = target.parentElement || root;
         }
         // 查找当前元素命中的委托
-        list.forEach(({ selector, handler }) => {
+        list.forEach(({ index, selector, handler }) => {
             if (!selector) {
-                execList.push({ target: root, handler, event });
+                execList.push({ index, target: root, handler, event });
             }
         });
         // 依次执行命中的委托

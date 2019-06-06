@@ -1,7 +1,7 @@
 {
     "name": "preact-dom-delegate",
     "description": "A preact plugin for DOM events delegate",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "author": "xingqiao <cctshiyu@126.com>",
     "keywords": [
         "preact",

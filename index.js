@@ -98,8 +98,8 @@ class Delegate {
             let { target, handler, event } = execList.shift();
             // 在事件处理函数中返回 false 时，停止后续的委托处理
             if (handler.call(target, event) === false) {
-                event.preventDefault();
-                event.stopPropagation();
+                event.cancelBubble = true;
+                event.defaultPrevented = true;
                 return false;
             }
         }

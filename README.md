@@ -5,6 +5,8 @@
 
 > 实现 preact 的 dom 事件委托
 
+> 只支持 preact 8，Preact X 可以使用 [preact-event-delegate](https://www.npmjs.com/package/preact-event-delegate)
+
 ## 安装
 
 ```bash
